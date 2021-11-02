@@ -2,7 +2,7 @@
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background-image: -o-linear-gradient(45deg,cyan, yellow);
+    
 }
 h1 {
     text-align: center;
@@ -13,12 +13,13 @@ h1 {
     text-align: center;
 }
 .login{
-    background-color:rgba(152, 139, 160, 0.9);
+    background-color:rgb(169, 196, 245);
     position: absolute;
     top: 70%;
     left: 50%;
     transform: translate(-50%,-50%);
-    padding: 80px;
+    padding: auto;
+    padding: 15px;
     border-radius: 20px;
 }
 p {font-family: Arial, Helvetica, sans-serif;
@@ -30,9 +31,8 @@ input{
     padding: 15px; 
     font-size: 15px;   
 }
-
 button{
-    background-color: blueviolet;
+    background-color:rgb(128, 153, 201);
     border: none;
     padding: 15px;
     width: 100%;
@@ -41,8 +41,29 @@ button{
     font-size: 15px;
 }
 button:hover{
-    background-color: slategray;
+    background-color: rgb(169, 196, 245);
 }
 img{
     align-content: center;
+}
+.calendario{
+    background-color: rgb(169, 196, 245);
+    padding: 5px;
+    border-radius: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: small;
+}
+.quadro_aviso{
+    background-color: rgb(128, 153, 201);
+    padding: 5px;
+    border-radius: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: small;
+}
+.quadro_ferias{
+    background-color: rgb(169, 196, 245);
+    padding: 5px;
+    border-radius: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: small;
 }
