@@ -1,0 +1,81 @@
+@charset "UTF-8";
+/* 
+*{
+    padding: 0;
+    margin: 0;
+    outline: 0;
+    box-sizing: border-box;
+    color: black;
+} */
+body {
+    height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;    
+}
+body, input, button{
+    font: 16px roboto, sans-serif;
+}
+h1 {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+}
+.logo{
+    text-align: center;
+    padding: 5px;
+}
+.login{
+    background-color:rgb(169, 196, 245);
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: auto;
+    padding: 15px;
+    border-radius: 20px;
+}
+a{
+    text-align: justify;
+    color: blue;
+    }
+p {font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+    font: optional;
+    color: black;    
+}
+input{
+    padding: 15px; 
+    font-size: 15px;   
+}
+button{
+    background-color:rgb(128, 153, 201);
+    border: none;
+    padding: 15px;
+    width: 100%;
+    border-radius: 10px;
+    color: white;
+    font-size: 15px;
+}
+button:hover{
+    background-color: rgb(169, 196, 245);
+}
+img{
+    align-content: center;
+}
+table.calendario{
+    color: black;
+}
+thead{
+    background-color: #333;
+}
+tr{
+    text-align: justify;
+    vertical-align: baseline;
+}
+
+.quadro_ferias{
+    background-color: rgb(169, 196, 245);
+    padding: 5px;
+    border-radius: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: small;
+}

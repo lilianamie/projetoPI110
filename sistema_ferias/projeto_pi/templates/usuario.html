@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="pt-br">
+<head>    
+    <meta charset="UTF-8">
+    <meta name="viewpoint"
+    content="width=device-width, initial-scale=1.0">
+    <title> Sistema de gestão e comunicação para repartições públicas - Usuário</title>
+    <link rel="shortcut icon" href="{% static 'favicon/favicon-16x16.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+    <link rel="stylesheet" href="{% static './js/jquery-ui-1.13.0/jquery-ui.min.css' %}">
+
+    <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'js/jquery-ui-1.13.0/jquery-ui.min.js' %}"></script>
+    <script src="{% static 'js/moment.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    
+</head>
+<body>
+    <header>
+        <div class="logo-usuario">
+            <img src="{% static 'favicon/univesp_logo_160x58.jpg' %}" alt="logo-univesp">
+            <p>Bem vindo USUÁRIO "FULANO DE TAL"</p>
+        </div>        
+    </header>
+    <hr>
+    <div class="calendario">
+        <h2>CALENDÁRIO - QUADRO DE AVISOS</h2>
+        <ol>
+            <li>Informa o dia da semana</li>
+            <li>Informa em destaque se há algum evento/ reunião</li>
+            <li>Visualiza a pauta do evento/reunião</li>
+        </ol>
+    </div>
+    <br>
+    <div class="quadro_ferias">
+        <h2>QUADRO DE FÉRIAS</h2>
+        <ol>
+            <li>Visualiza a intenção de férias já cadastradas</li>
+            <li>Cadastro de intenção de férias</li>
+            <li>Alterar</li>
+            <li>Excluir</li>
+            <li>Regra: 60 dias antes do vencimento das férias o usuário receberá notificação via e-mail/whatsap que as férias irão vencer.</li>
+        </ol>
+    </div>
+    <br>
+    <br>
+
+</body>
+</html>
