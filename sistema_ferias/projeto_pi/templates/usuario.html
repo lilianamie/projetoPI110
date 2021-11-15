@@ -25,27 +25,105 @@
         </div>        
     </header>
     <hr>
-    <div class="calendario">
-        <h2>CALENDÁRIO - QUADRO DE AVISOS</h2>
-        <ol>
-            <li>Informa o dia da semana</li>
-            <li>Informa em destaque se há algum evento/ reunião</li>
-            <li>Visualiza a pauta do evento/reunião</li>
-        </ol>
-    </div>
-    <br>
-    <div class="quadro_ferias">
-        <h2>QUADRO DE FÉRIAS</h2>
-        <ol>
-            <li>Visualiza a intenção de férias já cadastradas</li>
-            <li>Cadastro de intenção de férias</li>
-            <li>Alterar</li>
-            <li>Excluir</li>
-            <li>Regra: 60 dias antes do vencimento das férias o usuário receberá notificação via e-mail/whatsap que as férias irão vencer.</li>
-        </ol>
-    </div>
-    <br>
-    <br>
+    <hr>
+    <table class="calendario"> 
+        <thead>
+            <tr>
+                <th colspan="2">
+                    <h2>CALENDÁRIO - QUADRO DE AVISOS</h2>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>                       
+                    <div>Seus agendamentos:</div>
+                    <div class="list">
+                        <table  id="tblAgendamentos">
+                            <tr>
+                              <th>Data</th>
+                              <th>Horário</th>
+                              <th>Pauta</th>
+                              <th></th>
+                              <th></th>
+                            </tr>
+                            <tr>
+                              <td>25/11/2021</td>
+                              <td>10:00 AM</td>
+                              <td>Reunião com diretoria</td>
+                            </tr>
+                        </table>                           
+                    </div>  
+                </td>
+                <td>
+                    <thead>
+                        <tr>
+                            <th colspan="2">
+                                <h2>QUADRO DE FÉRIAS</h2>
+                                <!--<ol>
+                                <li>Visualiza a intenção de férias já cadastradas</li>
+                                <li>Cadastro de intenção de férias</li>
+                                <li>Alterar</li>
+                                <li>Excluir</li> -->
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div>
+                                    <h2>Férias Agendadas</h2>
+                                    <table id="tblFeriasAagendadas">
+                                    <tr>
+                                        <th>Nome Funcionário</th>
+                                        <th>Data início Férias</th>
+                                        <th>Data final das Férias</th>
+                                        <th>Status</th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                    <tr>
+                                        <td>João XXX</td>
+                                        <td>15/11/2021 </td> 
+                                        <td>30/11/2021</td>
+                                        <td>Aprovado</td>                                            
+                                    </tr>
+                                    </table>
+                                 </div>
+                                <button onclick="solicitar_ferias()">Solicitar Férias</button>
+                                <div id="divSolicitar_Ferias" style="display: none">
+                                    <form>
+                                        <label for="ferias-select">Escolha o intervalo de férias:</label>
+                                        <select name="periodo" id="intervalo_ferias2">
+                                            <option value="">--Please choose an option--</option>
+                                            <option value="30">30 dias de Férias</option>
+                                            <option value="15">15 dias/ 15 dias de Férias</option>
+                                            <option value="20">20 dias de Férias com 10 dias de abono</option>
+                                        </select>
+                                    
+                                        <table>
+                                            <tr>
+                                              <th>Informe da data de início:</th>                           
+                                              <th>data final das férias</th>
+                                            </tr>
+                                            <tr>
+                                              <td>
+                                                <div><input type="text" id="datepicker4"></div>  
+                                              </td>
+                                              <td>Sistema tem que calcular a data de final das férias conforme a opcção selecionada (30 dias ou 15/15 ou 20 </td>
+                                            </tr>
+                                          </table>
+                                          <button onclick="gravar_ferias()" input class="adicionar_agenda" value="Gravar"> Salvar</button>
+                                    </form>
+                                </div>
+                                
+                            </td>
+                        </tr>
+                    </tbody>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 
 </body>
 </html>
