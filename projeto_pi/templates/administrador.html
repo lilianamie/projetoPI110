@@ -48,7 +48,7 @@
             <tbody>
                 <tr>
                     <td>                       
-                        <div>Seus agendamentos:</div>
+                        <div>Seus agendamentos:</div>                       
                         <div class="list">
                             <table  id="tblAgendamentos">
                                 <tr>
@@ -57,8 +57,11 @@
                                   <th>Pauta</th>
                                   <th></th>
                                   <th></th>
-                                </tr>
-                                <tr>
+                                </tr>     
+                                {% for chave, valor in agendamento.items %}                         
+                                <h2> Teste {{ valor }}</h2>
+                                {% endfor %}
+                                <tr> 
                                   <td>25/11/2021</td>
                                   <td>10:00 AM</td>
                                   <td>Reunião com diretoria</td>
@@ -87,7 +90,9 @@
                                         </form>
                                     </div>
                                 </td>
+                                
                                 </tr>
+                                
                             </table>                           
                         </div>  
                         <button onclick="incluir_aviso()">Incluir Agenda</button>
