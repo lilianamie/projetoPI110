@@ -20,7 +20,8 @@ class Migration(migrations.Migration):
                 ('setor', models.CharField(max_length=10,choices=[('Compras','COMPRAS'), ('Administrativo', 'ADM'), ('Almoxarifado','ALMOX')])),
                 ('chefe_setor', models.BooleanField()),
                 ('data_admissao', models.DateField()),
-                ('email', models.CharField(max_length=50))
+                ('email', models.CharField(max_length=50)),
+                ('senha', models.IntegerField(max_length=6))
             ]
         ),
         migrations.CreateModel(

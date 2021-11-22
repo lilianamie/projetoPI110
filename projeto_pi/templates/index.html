@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewpoint"
     content="width=device-width, initial-scale=1.0">
-    <title> Sistema de gestão e comunicação para repartições públicas - Login</title>
+    <title> Sistema de gestão e comunicação para repartições públicas - Index</title>
     <link rel="shortcut icon" href="{% static 'favicon/favicon-16x16.png' %}" type="image/x-icon">
     <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
@@ -16,27 +16,41 @@
         <br>
         <h1>Sistema de gestão e comunicação para repartições públicas</h1>  
       
+        {% if erros %}
+        <div class="painelErros">
+            <ul>
+            {% for erro in erros %}
+            <li>{{ erro }}</li>
+            {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
         <hr>
         <div class="logo">
             <img src="{% static 'favicon/logo_univesp 343x132.png' %}" alt="Logo_univesp" >
         </div>
         
+        <form action="{% url 'login' %}" method="POST">
+        {% csrf_token %}
         <div class="login"> 
             <div>
-                <label for="username">Usuário:</label>
-                <input type="text" id="username" name="username">
+                <label for="email">E-mail:</label>
+                <input type="text" id="email" name="email" required>
             </div>
             
             <div>
                 <label for="pass">Senha (8 mpinimo caracteres):</label>
                 <input type="password" id="pass" name="password"
-                       minlength="8" required>
+                       minlength="6" required>
             </div>
             
             <input type="submit" value="Entrar">
-            <a href="{% url 'administrador' %}">Ir para página do ADM</a>
+           <a href="{% url 'administrador' %}">Ir para página do ADM</a>
             <a href="{% url 'usuario' %}">Ir para página do USUÁRIO</a>
+            
         </div>
+        </form>
     <hr>
     </main>
 </body>

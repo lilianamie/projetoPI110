@@ -58,46 +58,46 @@
                                   <th></th>
                                   <th></th>
                                 </tr>     
-                                {% for chave, valor in agendamento.items %}                         
-                                <h2> Teste {{ valor }}</h2>
-                                {% endfor %}
+                                {% for ag in agendamentos %}
                                 <tr> 
-                                  <td>25/11/2021</td>
-                                  <td>10:00 AM</td>
-                                  <td>Reunião com diretoria</td>
-                                  <td>
-                                    <button onclick="editar_aviso()">Alterar ou Excluir</button>
-                                    <div id="divEditarAviso" style="display: none">
-                                        <form>
-                                            <h1>Editar Agenda</h1>
-                                            <div class="agenda">
-                                                <div class="Editar_agenda">
-                                                    
-                                                    <p>Informe da data:</p>
-                                                    <div><input type="text" id="datepicker1"></div>                    
-                                                    <label for="appt">Horário:</label>
-                                                    <input type="time" id="appt" name="appt" min="09:00" max="18:00" required>
-                                                    <p>Pauta</p>
-                                                    <p><textarea rows="5" cols="40" maxlength="500"></textarea>
-                                                    </p>
-                                                    <p>
-                                                        <input class="adicionar_agenda" type="submit" value="Alterar">
-                                                        <input class="adicionar_agenda" type="submit" value="Excluir">
-
-                                                    </p>         
-                                                </div>                          
-                                            </div>
-                                        </form>
-                                    </div>
-                                </td>
-                                
-                                </tr>
+                                    <td>{{ ag.data_agenda }}</td>
+                                    <td>{{ ag.hora_agenda }}</td>
+                                    <td>{{ ag.pauta }}</td>
+                                    <td>
+                                      <button onclick="editar_aviso()">Alterar ou Excluir</button>
+                                      <div id="divEditarAviso" style="display: none">
+                                          <form action="" method="post">
+                                              <h1>Editar Agenda</h1>
+                                              <div class="agenda">
+                                                  <div class="Editar_agenda">
+                                                      
+                                                      <p>Informe da data:</p>
+                                                      <div><input type="text" id="datepicker1"></div>                    
+                                                      <label for="appt">Horário:</label>
+                                                      <input type="time" id="appt" name="appt" min="09:00" max="18:00" required>
+                                                      <p>Pauta</p>
+                                                      <p><textarea rows="5" cols="40" maxlength="500"></textarea>
+                                                      </p>
+                                                      <p>
+                                                          <input class="adicionar_agenda" type="submit" value="Alterar">
+                                                          <input class="adicionar_agenda" type="submit" value="Excluir">
+  
+                                                      </p>         
+                                                  </div>                          
+                                              </div>
+                                          </form>
+                                      </div>
+                                  </td>
+                                  
+                                  </tr>
+                                {% endfor %}
+                               
                                 
                             </table>                           
                         </div>  
                         <button onclick="incluir_aviso()">Incluir Agenda</button>
                         <div id="divIncluirAviso" style="display: none">
-                            <form>
+                            <form method="post">
                                 <h1>Incluir Agenda</h1>
                                 <div class="agenda">
                                     <div class="adicionar_agenda">
@@ -154,7 +154,7 @@
                                             <td>
                                                 <button onclick="editar_ferias()">Editar Férias</button>
                                                 <div id="divEditar_Ferias" style="display: none">
-                                                    <form>
+                                                    <form method="get"> 
                                                         <label for="ferias-select">Escolha o intervalo de férias:</label>
                                                         <select name="periodo" id="intervalo_ferias1">
                                                             <option value="">--Please choose an option--</option>
@@ -198,7 +198,7 @@
                             
                                     <button onclick="listar_ferias()">Listar novos pedidos de férias</button>
                                     <div id="divListarFerias" style="display: none">
-                                        <form>
+                                        <form method="get">
                                             <P>Listar novos pedidos de férias para serem "Aprovados" ou "Reprovados" </P>
                                             <table class="lst_solicitacao">
                                                 <tr>
