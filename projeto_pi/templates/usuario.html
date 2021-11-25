@@ -21,10 +21,11 @@
     <header>
         <div class="logo-usuario">
             <img src="{% static 'favicon/univesp_logo_160x58.jpg' %}" alt="logo-univesp">
-            <p>Bem vindo USUÁRIO "FULANO DE TAL"</p>
+            <h1>Bem vindo </h1>
+            <p> {{ Funcionario.nome }} </p>
+            <a class="logout_icone" href = "{% url 'logout' %}"> Logout </a>
         </div>        
     </header>
-    <hr>
     <hr>
     <table class="calendario"> 
         <thead>
@@ -44,17 +45,19 @@
                               <th>Data</th>
                               <th>Horário</th>
                               <th>Pauta</th>
-                              <th></th>
-                              <th></th>
+
                             </tr>
-                            <tr>
-                              <td>25/11/2021</td>
-                              <td>10:00 AM</td>
-                              <td>Reunião com diretoria</td>
-                            </tr>
-                        </table>                           
-                    </div>  
+                            {% for ag in agendamentos %}
+                                <tr>
+                                    <td>{{ ag.ts_agenda.date }}</td>
+                                    <td>{{ ag.ts_agenda.time }}</td>
+                                    <td>{{ ag.pauta_agenda }}</td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
                 </td>
+
                 <td>
                     <thead>
                         <tr>
@@ -68,55 +71,62 @@
                             </th>
                         </tr>
                     </thead>
+                </td>
                     <tbody>
                         <tr>
                             <td>
                                 <div>
-                                    <h2>Férias Agendadas</h2>
-                                    <table id="tblFeriasAagendadas">
-                                    <tr>
-                                        <th>Nome Funcionário</th>
-                                        <th>Data início Férias</th>
-                                        <th>Data final das Férias</th>
-                                        <th>Status</th>
-                                        <th></th>
-                                        <th></th>
-                                    </tr>
-                                    <tr>
-                                        <td>João XXX</td>
-                                        <td>15/11/2021 </td> 
-                                        <td>30/11/2021</td>
-                                        <td>Aprovado</td>                                            
-                                    </tr>
+                                    <h2 id="h2_ferias">Férias Agendadas</h2>
+                                    <table id="tblFeriasAagendadas()">
+                                        <tbody>
+                                            <tr>
+                                                <th>Nome Funcionário</th>
+                                                <th>Data início Férias</th>
+                                                <th>Data final das Férias</th>
+                                                <th>Status</th>
+
+                                            </tr>
+                                            {% for feria in ferias_agendadas %}
+                                                <tr>
+                                                    <td>{{ feria.funcionario.nome }}</td>
+                                                    <td>{{ feria.data_inicio }}</td>
+                                                    <td>{{ feria.data_fim }}</td>
+                                                    <td>{{ feria.status }}</td>
+                                                </tr>
+                                            {% endfor %}
+                                        </tbody>
                                     </table>
-                                 </div>
-                                <button onclick="solicitar_ferias()">Solicitar Férias</button>
-                                <div id="divSolicitar_Ferias" style="display: none">
-                                    <form>
-                                        <label for="ferias-select">Escolha o intervalo de férias:</label>
-                                        <select name="periodo" id="intervalo_ferias2">
-                                            <option value="">--Please choose an option--</option>
-                                            <option value="30">30 dias de Férias</option>
-                                            <option value="15">15 dias/ 15 dias de Férias</option>
-                                            <option value="20">20 dias de Férias com 10 dias de abono</option>
-                                        </select>
-                                    
-                                        <table>
-                                            <tr>
-                                              <th>Informe da data de início:</th>                           
-                                              <th>data final das férias</th>
-                                            </tr>
-                                            <tr>
-                                              <td>
-                                                <div><input type="text" id="datepicker4"></div>  
-                                              </td>
-                                              <td>Sistema tem que calcular a data de final das férias conforme a opcção selecionada (30 dias ou 15/15 ou 20 </td>
-                                            </tr>
-                                          </table>
-                                          <button onclick="gravar_ferias()" input class="adicionar_agenda" value="Gravar"> Salvar</button>
-                                    </form>
+                                    <div>
+                                        <button onclick="solicitar_ferias()">Solicitar Férias</button>
+                                        <form action="{% url 'solicitar_ferias' %}" method="POST">
+                                            {% csrf_token %}
+                                            <div id="divSolicitar_Ferias" >
+                                                <label for="intervalo_ferias2">Escolha o intervalo de férias:</label>
+                                                <select name="periodo" id="intervalo_ferias2">
+                                                    <option value="">--Please choose an option--</option>
+                                                    <option value="30" >30 dias de Férias</option>
+                                                    <option value="15">15 dias/ 15 dias de Férias</option>
+                                                    <option value="20">20 dias de Férias com 10 dias de abono</option>
+                                                </select>
+                                                <table>
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Informe da data de início:</th>
+                                                        </tr>
+                                                        <tr>
+                                                          <td>
+                                                            <div><input type="date" id="datepicker4" name="data_inicio"></div>
+                                                          </td>
+                                                          <td>
+                                                              <input class="solicitar_ferias" type="submit" value="Salvar" onsubmit="gravar_ferias()">
+                                                          </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
-                                
                             </td>
                         </tr>
                     </tbody>
@@ -124,6 +134,5 @@
             </tr>
         </tbody>
     </table>
-
 </body>
 </html>

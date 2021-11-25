@@ -1,5 +1,6 @@
 from django.db import models
-#from datetime import datetime
+from datetime import datetime
+from django.utils import timezone as django_tz
 
 class Funcionario(models.Model):
     id_func = models.IntegerField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID_FUNC')
@@ -12,17 +13,18 @@ class Funcionario(models.Model):
 
 class Ferias(models.Model):
     id_ferias = models.IntegerField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID_FERIAS')
-    id_func = models.ForeignKey('Funcionario', on_delete=models.CASCADE)
+    funcionario = models.ForeignKey(Funcionario, on_delete=models.CASCADE)
     data_inicio = models.DateField(verbose_name='data de início')
     data_fim = models.DateField(verbose_name='data de fim')
     periodo =  models.IntegerField(choices=[('30 dias', 30), ('20 dias', 20), ('15 dias', 15)], default=30)
-    status = models.CharField(choices=[('DEFERIDO','Deferido'), ('INDEFERIDO', 'Indeferido')], max_length=10)
+    status = models.CharField(choices=[('DEFERIDO','Deferido'), ('INDEFERIDO', 'Indeferido'), ('PENDENTE','Pendente')], max_length=10)
             
 class Agenda(models.Model):
     id_agenda = models.IntegerField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID_AGENDA')
     id_func = models.ForeignKey('Funcionario', on_delete=models.CASCADE)
-    data_agenda = models.DateField(verbose_name='data do agendamento')
-    hora_agenda = models.DateTimeField(verbose_name='horário do agendamento')
-    pauta_agenda = models.CharField(max_length=500)
+    # data_agenda = models.DateField(verbose_name='data do agendamento')
+    # hora_agenda = models.DateTimeField(verbose_name='horário do agendamento')
+    ts_agenda = models.DateTimeField(verbose_name='data e hora do agendamento', default=django_tz.now)
+    pauta_agenda = models.TextField(max_length=500)
 
 
